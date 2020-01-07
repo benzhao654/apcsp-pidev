@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 int main()
 {
@@ -29,11 +30,18 @@ int main()
   printf("The address of d is %d\n", &d);
   printf("The address of e is %d\n", &e);
 
-  float* ptrd, ptre;
-  *ptrd = &d;
-  *ptre = &e;
+  float* ptrd;
+  float* ptre;
 
-  int temp = 
+  ptrd = &d;
+  ptre = &e;
+
+  float temp = *ptrd;
+  *ptrd = *ptre;
+  *ptre = temp;
+
+  printf("The value of d is %f\n",d);
+  printf("The value of e is %f\n",e);
 
 
 
