@@ -5,7 +5,6 @@ typedef struct{
 	char ln[100];
 	int age;
 	int id;
-
 } student;
 
 void printstud(student* stud)
@@ -15,42 +14,40 @@ void printstud(student* stud)
 	printf("id: %d\n", stud->id);
 }
 
-void enterstud(student student)
+void enterstud(student* stu)
 {
 	printf("Enter the first name: ");
-	fgets(input, 256, stdin);
-	sscanf(input, "%s", name->fn);
+  scanf("%s", stu->fn);
 
 	printf("Enter the last name: ");
-	fgets(input, 256, stdin);
-	sscanf(input, "%s", name->ln);
+  scanf("%s", stu->ln);
 
 	printf("Enter the age: ");
-	fgets(input, 256, stdin);
-	sscanf(input, "%s", name->age);
+  scanf("%d", &(stu->age));
 
 	printf("Enter the student id: ");
-	fgets(input, 256, stdin);
-	sscanf(input, "%s", name->id);
-
+  scanf("%d", &(stu->id));
 }
+
 int main()
 {
-	char answer, counter;
+	char answer;
+  int counter;
 	printf("Enter a student?(y/n) ");
-	scanf("%c",answer);
-	counter = 'a';
+	scanf("%c", &answer);
+	counter = 0;
 	student students[100];
 
 	while (answer == 'y')
 	{
-		
+		enterstud(&students[counter]);
+    counter++;
+    printf("Enter a student?(y/n) ");
+	  scanf(" %c", &answer);
 	}
 
-
-
-
-
-
-
+  for (int i = 0; i < counter; i++)
+  {
+    printstud(&students[i]);
+  }
 }
